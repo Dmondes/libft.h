@@ -1,18 +1,7 @@
-int	ft_str_is_alpha(char *str)
+int ft_str_is_alpha(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (!((str[i] >= 'A' && str[i] <= 'Z')
-				|| (str[i] >= 'a' && str[i] <= 'z')))
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
+    if((c > 'a' && c < 'z') || (c > 'A' && c < 'Z'))
+        return (1);
+    return (0);
 }
-// char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"; alternate soln
-//check str[i] for uppercase or lowercase, returns 0 if not, else returns 1
+
