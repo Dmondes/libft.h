@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void bzero (void *block, size_t size)
+void ft_bzero (void *block, size_t size)
 {
     size_t i;
 
