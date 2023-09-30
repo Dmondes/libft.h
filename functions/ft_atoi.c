@@ -6,7 +6,7 @@ char	*checkspace(char *str)
 
 	i = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32) // check for whitespace characters
-		i ++; // iterate through and skip
+		i ++; // iterate through then skip
 	return (&(str[i])); // return pointer to the first non-whitespace character
 }
 
