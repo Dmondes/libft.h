@@ -4,18 +4,18 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	destlen;
 	size_t	srclen;
-	size_t	count;
+	size_t	i;
     
-    count = 0;
+   	i = 0;
 	destlen = ft_strlen(dest);
 	srclen = ft_strlen(src);
-	if (size <= destlen)
+	if (size == 0 || size < (destlen + srclen))
 		return (srclen + size);
-	while ((src[count] != '\0') && (count < size - destlen - 1))
+	while ((src[i]) && (destlen + i < size - 1))
 	{
-		dest[destlen + count] = src[count];
-		count++;
+		dest[destlen + i] = src[i]; // append src at the end of dest
+		i ++;
 	}
-	dest[destlen + count] = '\0';
+	dest[destlen + i] = '\0';
 	return (destlen + srclen);
 }
