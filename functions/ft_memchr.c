@@ -8,7 +8,7 @@ void * ft_memchr(const void *block, int c, size_t size)
     while (i < size)
     {
         if (*(unsigned char*)(block + i) == (unsigned char)c) // ensure they are individual btyes
-            return ((void*)(block+ i));
+            return ((void*)(block+ i)); // return void type pointer
         i++;
     }
     return (NULL);
