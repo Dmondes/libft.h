@@ -10,7 +10,7 @@ char	*ft_strdup(char *src)
 	len = ft_strlen(src) + 1;
 	point = (char *)malloc(sizeof(char) * len); // reserve the space required to store the string
 	if (!point)
-		return (0); // if malloc fails, return 0
+		return (NULL); // if malloc fails, return 0
 	while (src[i])
 	{
 		point[i] = src[i];
