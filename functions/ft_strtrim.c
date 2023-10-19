@@ -1,9 +1,6 @@
 #include "libft.h"
 
 char *ft_strtrim(char const *s1, char const *set) {
-    if (s1 == NULL || set == NULL) {
-        return (NULL);
-    }
     size_t start;
     size_t end;
     size_t len;
@@ -15,6 +12,9 @@ char *ft_strtrim(char const *s1, char const *set) {
     end = 0;
     i = 0;
 
+    if (s1 == NULL || set == NULL) {
+        return (NULL);
+    }
     len = ft_strlen(s1);
     while (start < len && ft_strchr(set, s1[start]) != NULL) // Find the no of characters to remove from the beginning
     {
