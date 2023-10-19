@@ -6,7 +6,7 @@ char *ft_strtrim(char const *s1, char const *set) {
     size_t len;
     size_t i;
     size_t trimmed_len;
-    char *trimmed;
+    char *trim_str;
 
     start = 0;
     end = 0;
@@ -25,14 +25,14 @@ char *ft_strtrim(char const *s1, char const *set) {
         end++;
     }
      trimmed_len = len - start - end; // len of the trimmed string
-    trimmed = (char *)malloc(sizeof(char) * (trimmed_len + 1));
-    if (!trimmed) 
+    trim_str = (char *)malloc(sizeof(char) * (trimmed_len + 1));
+    if (!trim_str) 
         return (NULL); 
     while (i < trimmed_len)
     {
-        trimmed[i] = s1[start + i];
+        trim_str[i] = s1[start + i];
         i ++;
     }
-    trimmed[i] = '\0';
-    return (trimmed);
+    trim_str[i] = '\0';
+    return (trim_str);
 }
