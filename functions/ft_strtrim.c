@@ -1,39 +1,38 @@
 #include "libft.h"
 
-static int	ft_char_in_set(char c, char const *set) {
-    while (*set) {
-        if (c == *set++)
-            return 1;
-    }
-    return 0;
-}
-
-char	*ft_strtrim(char const *s1, char const *set) {
+char *ft_strtrim(char const *s1, char const *set) {
     if (s1 == NULL || set == NULL) {
-        return NULL;
+        return (NULL);
     }
+    size_t start;
+    size_t end;
+    size_t len;
+    size_t i;
+    size_t trimmed_len;
+    char *trimmed;
 
-    size_t start = 0;
-    size_t end = ft_strlen(s1);
+    start = 0;
+    end = 0;
+    i = 0;
 
-    while (s1[start] && ft_char_in_set(s1[start], set)) {
+    len = ft_strlen(s1);
+    while (start < len && ft_strchr(set, s1[start]) != NULL) // Find the no of characters to remove from the beginning
+    {
         start++;
     }
-
-    while (end > start && ft_char_in_set(s1[end - 1], set)) {
-        end--;
+    while (end < len && ft_strrchr(set, s1[len - end - 1]) != NULL) // Find the no of characters to remove from the end
+    {
+        end++;
     }
-
-    size_t trimmed_length = end - start;
-
-    char *trimmed_str = (char *)malloc(sizeof(char) * (trimmed_length + 1));
-
-    if (trimmed_str == NULL) {
-        return NULL; // Memory allocation failed
+     trimmed_len = len - start - end; // len of the trimmed string
+    trimmed = (char *)malloc(sizeof(char) * (trimmed_len + 1));
+    if (!trimmed) 
+        return (NULL); 
+    while (i < trimmed_len)
+    {
+        trimmed[i] = s1[start + i];
+        i ++;
     }
-
-    ft_strlcpy(trimmed_str, s1 + start, trimmed_length + 1);
-
-    return trimmed_str;
+    trimmed[i] = '\0';
+    return (trimmed);
 }
-
