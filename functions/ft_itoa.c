@@ -5,7 +5,7 @@ char *ft_itoa(int n)
 {
     if (n == 0)  // Handle the special case of 0
     {
-        char *result = (char *)malloc(2);
+        char *result = (char *)malloc(2); // malloc 2
         if (result)
         {
             result[0] = '0';
