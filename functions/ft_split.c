@@ -1,65 +1,69 @@
 #include <stdlib.h> 
 #include "libft.h"
 
-static int	count_words(const char *s, char c)
+static int count_words(const char *s, char c) // static to restrict scope of function to file defined in
 {
-	int count = 0;
-	int in_word = 0;
+    int i;
+    int count;
 
-	while (*s)
-	{
-		if (*s != c && in_word == 0)
-		{
-			in_word = 1;
-			count++;
-		}
-		else if (*s == c)
-		{
-			in_word = 0;
-		}
-		s++;
-	}
-	return (count);
+    i = 0;
+    count = 0;
+    while (s[i]) 
+    {
+       
+        while (s[i] == c)  // Skip leading delimiters
+            i ++;
+        if (s[i] && s[i] != c) // Check for the start of a word
+        {
+            count ++;
+            while (s[i] && s[i] != c) // Skip the rest of the word
+                i ++;
+        }
+    }
+    return (count);
 }
 
-static char	*word_dup(const char *s, int start, int finish)
+char **ft_split(char const *s, char c) 
 {
-	char	*word;
-	int		i;
+    char **result;
+    int num_words;
+    int index;
+    int i;
+    int j;
+    int start;
+    unsigned int len;
 
-	i = 0;
-	word = malloc((finish - start + 1) * sizeof(char));
-	while (start < finish)
-	{
-		word[i++] = s[start++];
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-char		**ft_split(char const *s, char c)
-{
-	size_t	i;
-	size_t	j;
-	int		index;
-	char	**split;
-
-	if (!s || !(split = malloc((count_words(s, c) + 1) * sizeof(char *))))
-		return (0);
-	i = 0;
-	j = 0;
-	index = -1;
-	while (s[i])
-	{
-		if (s[i] != c && index < 0)
-			index = i;
-		else if ((s[i] == c || s[i + 1] == '\0') && index >= 0)
-		{
-			split[j++] = word_dup(s, index, i + (s[i + 1] == '\0' ? 1 : 0));
-			index = -1;
-		}
-		i++;
-	}
-	split[j] = 0;
-	return (split);
+    num_words = count_words(s, c);
+    index = 0;
+    i = 0;
+    result = (char **)malloc(sizeof(char *) * (num_words + 1));
+    if (!result)
+        return (NULL);
+    while (s[i] != '\0') 
+    {
+        if (s[i] != c) 
+        {
+            start = i; // Starting position of the word
+            while (s[i] && s[i] != c) 
+                i ++;
+            len = i - start;
+            result[index] = (char *)malloc(len + 1);
+            if (!result[index])
+            {
+                j = 0; // Free previously allocated memory and return NULL
+                while (j < index)
+                 {
+                    free(result[j]);
+                    j ++;
+                }
+                free(result);
+                return (NULL);
+            }
+            ft_strlcpy(result[index], s + start, len + 1);
+            index ++;
+        }
+        i++;
+    }
+    result[index] = NULL; // mark the end of the array of pointers
+    return (result);
 }
