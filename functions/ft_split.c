@@ -39,7 +39,7 @@ char **ft_split(char const *s, char c)
     new_str = (char **)malloc(sizeof(char *) * (num_words + 1));
     if (!new_str)
         return (NULL);
-    while (s[i] != '\0') 
+    while (s[i]) 
     {
         if (s[i] != c) 
         {
