@@ -25,7 +25,7 @@ static int count_words(const char *s, char c) // static to restrict scope of fun
 
 char **ft_split(char const *s, char c) 
 {
-    char **result;
+    char **new_str;
     int num_words;
     int index;
     int i;
@@ -36,8 +36,8 @@ char **ft_split(char const *s, char c)
     num_words = count_words(s, c);
     index = 0;
     i = 0;
-    result = (char **)malloc(sizeof(char *) * (num_words + 1));
-    if (!result)
+    new_str = (char **)malloc(sizeof(char *) * (num_words + 1));
+    if (!new_str)
         return (NULL);
     while (s[i] != '\0') 
     {
@@ -47,23 +47,23 @@ char **ft_split(char const *s, char c)
             while (s[i] && s[i] != c) 
                 i ++;
             len = i - start;
-            result[index] = (char *)malloc(len + 1);
-            if (!result[index])
+            new_str[index] = (char *)malloc(len + 1);
+            if (!new_str[index])
             {
                 j = 0; // Free previously allocated memory and return NULL
                 while (j < index)
                  {
-                    free(result[j]);
+                    free(new_str[j]);
                     j ++;
                 }
-                free(result);
+                free(new_str);
                 return (NULL);
             }
-            ft_strlcpy(result[index], s + start, len + 1);
+            ft_strlcpy(new_str[index], s + start, len + 1);
             index ++;
         }
         i++;
     }
-    result[index] = NULL; // mark the end of the array of pointers
-    return (result);
+    new_str[index] = NULL; // mark the end of the array of pointers
+    return (new_str);
 }
