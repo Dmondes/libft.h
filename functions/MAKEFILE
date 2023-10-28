@@ -1,4 +1,4 @@
-# Compiler flags
+# Compiler flags    
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
