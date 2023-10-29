@@ -1,9 +1,9 @@
 #include "libft.h"
-#include <unistd.h>
 
 void ft_putstr_fd(char *s, int fd)
 {
     unsigned int i;
+
     i = 0;
     while (s[i])
     {
@@ -11,4 +11,3 @@ void ft_putstr_fd(char *s, int fd)
         i ++;
     }
 }
-    
