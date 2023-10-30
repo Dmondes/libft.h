@@ -26,7 +26,7 @@ char *ft_strtrim(char const *s1, char const *set)
     {
         trim_str[i] = s1[start + i];
         i ++;
-    }
+    }  
     trim_str[i] = '\0';
     return (trim_str);
 }
