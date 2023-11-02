@@ -1,69 +1,73 @@
-#include <stdlib.h> 
 #include "libft.h"
 
-static int count_words(const char *s, char c) // static to restrict scope of function to file defined in
+static int count_words(const char *s, char c)
 {
     int i;
     int count;
 
     i = 0;
     count = 0;
-    while (s[i]) 
+    while (s[i])
     {
-       
-        while (s[i] == c)  // Skip leading delimiters
-            i ++;
-        if (s[i] && s[i] != c) // Check for the start of a word
+        while (s[i] == c)
+            i++;
+        if (s[i] && s[i] != c)
         {
-            count ++;
-            while (s[i] && s[i] != c) // Skip the rest of the word
-                i ++;
+            count++;
+            while (s[i] && s[i] != c)
+                i++;
         }
     }
     return (count);
 }
 
-char **ft_split(char const *s, char c) 
+void add_str(char const *s, char **new_arr, char c)
 {
-    char **new_str;
-    int num_words;
-    int index;
     int i;
-    int j;
+    int index;
     int start;
-    unsigned int len;
+    int len;
 
-    num_words = count_words(s, c);
-    index = 0;
     i = 0;
-    new_str = (char **)malloc(sizeof(char *) * (num_words + 1));
-    if (!new_str)
-        return (NULL);
-    while (s[i]) 
+    index = 0;
+    while (s[i])
     {
-        if (s[i] != c) 
-        {
-            start = i; // Starting position of the word
-            while (s[i] && s[i] != c) 
-                i ++;
-            len = i - start;
-            new_str[index] = (char *)malloc(len + 1);
-            if (!new_str[index])
-            {
-                j = 0; // Free previously allocated memory and return NULL
-                while (j < index)
-                 {
-                    free(new_str[j]);
-                    j ++;
-                }
-                free(new_str);
-                return (NULL);
-            }
-            ft_strlcpy(new_str[index], s + start, len + 1);
-            index ++;
-        }
+        while (s[i] == c)
+            i++;
+        start = i;
+        while (s[i] && s[i] != c)
+            i++;
+        len = i - start;
+        new_arr[index] = ft_substr(s, start, len);
+        free_str(new_arr, index);
+        index++;
         i++;
     }
-    new_str[index] = NULL; // mark the end of the array of pointers
-    return (new_str);
+    new_arr[index] = NULL;
+}
+
+void free_str(char **new_arr, int index)
+{
+    if (!new_arr[index])
+    {
+        while (index >= 0)
+        {
+            free(new_arr[index]);
+            index --;
+        }
+        free(new_arr);
+    }
+}
+
+char **ft_split(char const *s, char c)
+{
+    char **new_arr;
+
+    new_arr = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
+    if (!new_arr)
+        return (NULL);
+    add_str(s, new_arr, c);
+    if (new_arr == NULL)
+        return (NULL);
+    return (new_arr);
 }
