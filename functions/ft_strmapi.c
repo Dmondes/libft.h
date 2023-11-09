@@ -1,5 +1,4 @@
 #include "libft.h"
-#include <stdlib.h>
 
 char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -17,7 +16,7 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
     i = 0;
     while (i < len)
     {
-        ch = *f(i, s[i]);
+        ch = f(i, s[i]);
         new_str[i] = ch;
         i ++;
     }
