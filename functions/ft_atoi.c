@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char	*checkspace(char *str)
+char	*checkspace(const char *str)
 {
 	int	i;
 
