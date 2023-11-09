@@ -39,7 +39,7 @@ char	*ft_strnstr(const char *str, const char *find, size_t size);
 int		ft_atoi(const char *nb);
 
 void	*ft_calloc(size_t n, size_t size);
-char	*ft_strdup(const char *str);
+char	*ft_strdup(char *src);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
