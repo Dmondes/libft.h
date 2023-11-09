@@ -7,7 +7,7 @@ char  *ft_strrchr(const char *s, int c)
 
 	i = ft_strlen(s); // get the length of string
 	ch = c;
-	if (ch == "\0") // check if ch is the null character
+	if (ch == '\0') // check if ch is the null character
         	return ((char *)&s[i]); // return a pointer to the null-terminating character
 	while (i >= 0)
 	{
