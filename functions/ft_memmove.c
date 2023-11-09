@@ -2,7 +2,7 @@
 
 void *ft_memmove(void *dest, const void *src, size_t n)
 {
-    size_t i;
+    int i;
 
     if (!dest || !src)
         return (NULL); // check for null pointers, in case the function dereferences null pointers
