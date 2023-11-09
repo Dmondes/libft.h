@@ -10,7 +10,7 @@ void *ft_memmove(void *dest, const void *src, size_t n)
     if (dest > src) // <n, dest comes after src, might have overlap
     {
         i = n - 1;
-        while (i >= 0 && i < n) // copies from the end
+        while (i < n) // copies from the end
         {
             ((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
             i--;
