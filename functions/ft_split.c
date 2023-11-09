@@ -21,6 +21,19 @@ static int count_words(const char *s, char c)
     return (count);
 }
 
+void free_str(char **new_arr, int index)
+{
+    if (!new_arr[index])
+    {
+        while (index >= 0)
+        {
+            free(new_arr[index]);
+            index --;
+        }
+        free(new_arr);
+    }
+}
+
 void add_str(char const *s, char **new_arr, char c)
 {
     int i;
@@ -44,19 +57,6 @@ void add_str(char const *s, char **new_arr, char c)
         i++;
     }
     new_arr[index] = NULL;
-}
-
-void free_str(char **new_arr, int index)
-{
-    if (!new_arr[index])
-    {
-        while (index >= 0)
-        {
-            free(new_arr[index]);
-            index --;
-        }
-        free(new_arr);
-    }
 }
 
 char **ft_split(char const *s, char c)
