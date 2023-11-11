@@ -11,8 +11,10 @@ size_t  ft_strlcpy(char *dest, const char *src, size_t size)
         {
             dest[i] = src[i];
         }
+        if (i == (size - 1))
+            dest[i] = '\0';
         i ++;
     }
-    dest[i] = '\0';
     return (i);
 }
+
