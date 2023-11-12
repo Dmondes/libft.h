@@ -20,7 +20,7 @@ int ft_atoi(const char *str)
 	negative = 0;
 	num = 0;
 	str = checkspace(str); // skip leading whitespaces
-	while (str[i] == '+' || str[i] == '-')// skip +/- signs
+	if (str[i] == '+' || str[i] == '-')// skip +/- signs
 	{
 		if (str [i] == '-')
 			negative ++; // track no of - signs
