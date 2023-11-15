@@ -54,7 +54,6 @@ void add_str(char const *s, char **new_arr, char c)
         new_arr[index] = ft_substr(s, start, len);
         free_str(new_arr, index);
         index++;
-        i++;
     }
     new_arr[index] = NULL;
 }
