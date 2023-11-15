@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char *case_zero()
+char *case_zero(void)
 {
     char *new_str;
 
@@ -17,7 +17,7 @@ int count_digits(int n)
     int count;
 
     count = 0;
-    while (n > 0) 
+    while (n != 0) 
     {
         count++;
         n /= 10;
@@ -28,7 +28,7 @@ int count_digits(int n)
 void fill_str(int count, int n, char *new_str, int negative)
 {
     count -= 1;
-    while (count >= 0) // Fill the string in reverse order
+    while (n > 0) // 
     {
         new_str[count] = n % 10 + '0';
         n /= 10;
@@ -62,5 +62,6 @@ char *ft_itoa(int n)
     if (!new_str) 
         return (NULL);
     fill_str(count, n, new_str, negative);
+    new_str[count] = '\0';
     return (new_str);
 }
