@@ -6,6 +6,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
    	i = 0;
+	if (!s || start >= ft_strlen(s))
+                return (ft_strdup(""));
 	if (!s)
 		return (NULL);
 	new_str = (char *)malloc(len + 1); //len + null-terminated
