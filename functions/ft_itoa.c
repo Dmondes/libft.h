@@ -25,43 +25,42 @@ int count_digits(int n)
     return (count);
 }
 
-void fill_str(int count, int n, char *new_str, int negative)
+void    fill_str(int count, long n, char *new_str, int negative)
 {
-    count -= 1;
-    while (n > 0) // 
-    {
-        new_str[count] = n % 10 + '0';
-        n /= 10;
-        count --;
-    }
-    if (negative) 
-        new_str[0] = '-'; // minus sign if negative
+        count -= 1;
+        while (n > 0)
+        {
+                new_str[count] = n % 10 + '0';
+                n /= 10;
+                count --;
+        }
+        if (negative)
+                new_str[0] = '-';
 }
 
-char *ft_itoa(int n)
- {
-    int negative;
-    int count;
-    char *new_str;
+char    *ft_itoa(int n)
+{
+        int             negative;
+        int             count;
+        char    *new_str;
+        long int        num;
 
-    negative = 0;
-    count = 0;
-    if (n == 0)  // Handle the special case of 0
-    {
-        new_str = case_zero();
+        negative = 0;
+        count = 0;
+        num = n;
+        if (n == 0)
+                return(case_zero());
+        if (num < 0)
+        {
+                num = -num;
+                negative = 1;
+                count ++;
+        }
+        count += count_digits(num);
+        new_str = (char *)malloc(count + 1);
+        if (!new_str)
+                return (NULL);
+        fill_str(count, num, new_str, negative);
+        new_str[count] = '\0';
         return (new_str);
-    }
-    if (n < 0) // Handle negative numbers
-    {
-        n = -n;
-        negative = 1;
-        count++;
-    }
-    count += count_digits(n);
-    new_str = (char *)malloc(count + 1); // +1 for the null-terminator
-    if (!new_str) 
-        return (NULL);
-    fill_str(count, n, new_str, negative);
-    new_str[count] = '\0';
-    return (new_str);
 }
