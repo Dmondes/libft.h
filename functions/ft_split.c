@@ -34,28 +34,31 @@ void free_str(char **new_arr, int index)
     }
 }
 
-void add_str(char const *s, char **new_arr, char c)
+void    add_str(char const *s, char **new_arr, char c)
 {
-    int i;
-    int index;
-    int start;
-    int len;
+        int     i;
+        int     index;
+        int     start;
+        int     len;
 
-    i = 0;
-    index = 0;
-    while (s[i])
-    {
-        while (s[i] == c)
-            i++;
-        start = i;
-        while (s[i] && s[i] != c)
-            i++;
-        len = i - start;
-        new_arr[index] = ft_substr(s, start, len);
-        free_str(new_arr, index);
-        index++;
-    }
-    new_arr[index] = NULL;
+        i = 0;
+        index = 0;
+        while (s[i])
+        {
+                while (s[i] == c)
+                        i ++;
+                start = i;
+                while (s[i] && s[i] != c)
+                        i ++;
+                len = i - start;
+                if (len != 0)
+                {
+                        new_arr[index] = ft_substr(s, start, len);
+                        free_str(new_arr, index);
+                        index ++;
+                }
+        }
+        new_arr[index] = NULL;
 }
 
 char **ft_split(char const *s, char c)
