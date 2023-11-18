@@ -34,4 +34,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+bonus: $(B_FILES)
+        ar rcs $(NAME) $^
+
+.PHONY: all clean fclean re bonus
