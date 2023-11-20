@@ -1,3 +1,4 @@
+#include "libft.h"
 void    copy_str(char *trim_str, char const *s1, int start, int t_len)
 {
         int     i;
