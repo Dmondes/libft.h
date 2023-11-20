@@ -12,7 +12,7 @@ void    copy_str(char *trim_str, char const *s1, int start, int t_len)
         trim_str[i] = '\0';
 }
 
-char    *str_zero()
+char    *str_zero(void)
 {
         char    *trim_str;
 
@@ -25,10 +25,10 @@ char    *str_zero()
 
 char    *ft_strtrim(char const *s1, char const *set)
 {
-        int     start;
-        int     len;
-        int     i;
-        int     trimmed_len;
+        int             start;
+        int             len;
+        int             i;
+        int             trimmed_len;
         char    *trim_str;
 
         start = 0;
