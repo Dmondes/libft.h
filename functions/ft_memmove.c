@@ -4,21 +4,21 @@ void *ft_memmove(void *dest, const void *src, size_t n)
 {
     size_t i;
 
-    if (!dest || !src)
-        return (NULL); // check for null pointers, in case the function dereferences null pointers
+    if (!dest && !src)
+        return (NULL);
     i = 0;
-    if (dest > src) // <n, dest comes after src, might have overlap
+    if (dest > src)
     {
-        i = n - 1;
-        while (i < n) // copies from the end
+        i = n;
+        while (i > 0)
         {
-            ((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+            ((unsigned char *)dest)[i - 1] = ((unsigned char *)src)[i - 1];
             i--;
         }
     }
     else
     {
-        while (i < n) // no overlap, copies from the start
+        while (i < n)
         {
             ((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
             i++;
