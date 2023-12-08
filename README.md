@@ -1,0 +1,1 @@
+Completed the mandantory portion of the project. Took significant of time as it was the first project and there are a lot of functions to replicate. Hardest functions for me would be ft_substr, ft_strtrim and ft_split.
